@@ -15,19 +15,43 @@ namespace HumanResourceApp
     /// </summary>
     public partial class App : Application
     {
-        protected void ApplicationStart (object sender, StartupEventArgs e)
+
+        protected override void OnStartup(StartupEventArgs e)
         {
-            var loginView = new LoginView();
-            loginView.Show();
-            loginView.IsVisibleChanged += (s, ev) =>
+            MainWindow = new LoginView()
             {
-                if (loginView.IsVisible == false && loginView.IsLoaded)
+                DataContext = new LoginViewModel()
+            };
+
+            MainWindow.Show();
+
+            MainWindow.IsVisibleChanged += (s, ev) =>
+            {
+                if (MainWindow.IsVisible == false && MainWindow.IsLoaded)
                 {
                     var mainView = new MainView();
                     mainView.Show();
-                    loginView.Close();
+                    MainWindow.Close();
                 }
             };
+
         }
+
+
+
+        //protected void ApplicationStart (object sender, StartupEventArgs e)
+        //{
+        //    var loginView = new LoginView();
+        //    loginView.Show();
+//        loginView.IsVisibleChanged += (s, ev) =>
+//            {
+//                if (loginView.IsVisible == false && loginView.IsLoaded)
+//                {
+//                    var mainView = new MainView();
+//        mainView.Show();
+//                    loginView.Close();
+//                }
+//};
     }
-}
+    }
+
