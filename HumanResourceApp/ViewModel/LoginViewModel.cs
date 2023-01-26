@@ -1,16 +1,11 @@
 ﻿using HumanResourceApp.Factory;
 using HumanResourceApp.Model;
-using HumanResourceApp.Repositories;
 using HumanResourceApp.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Security;
 using System.Security.Principal;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace HumanResourceApp.ViewModel
@@ -28,32 +23,36 @@ namespace HumanResourceApp.ViewModel
 
         private IUserRepository userRepository;
 
-        public string Username {
-            get => _username; 
+        public string Username
+        {
+            get => _username;
             set
             {
                 _username = value;
                 OnPropertyChanged(nameof(Username));
             }
         }
-        public SecureString Password {
-            get => _password; 
+        public SecureString Password
+        {
+            get => _password;
             set
             {
                 _password = value;
                 OnPropertyChanged(nameof(Password));
             }
         }
-        public string ErrorMessage { 
-            get => _errorMessage; 
+        public string ErrorMessage
+        {
+            get => _errorMessage;
             set
             {
                 _errorMessage = value;
                 OnPropertyChanged(nameof(ErrorMessage));
             }
         }
-        public bool IsViewVisible { 
-            get => _isViewVisible; 
+        public bool IsViewVisible
+        {
+            get => _isViewVisible;
             set
             {
                 _isViewVisible = value;
@@ -74,7 +73,7 @@ namespace HumanResourceApp.ViewModel
             RecoverPasswordCommand = new ViewModelCommand(ExecuteRecoverPassCommand);
         }
 
-        
+
 
         private void ExecuteRecoverPassCommand(object obj)
         {

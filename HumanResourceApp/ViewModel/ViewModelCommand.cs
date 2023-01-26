@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace HumanResourceApp.ViewModel
@@ -29,7 +25,7 @@ namespace HumanResourceApp.ViewModel
         public event EventHandler? CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
-            remove {CommandManager.RequerySuggested -= value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
 
         //Methods

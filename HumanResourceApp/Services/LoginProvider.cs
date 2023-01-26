@@ -1,11 +1,7 @@
 ﻿using HumanResourceApp.Factory;
 using HumanResourceApp.Repositories;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HumanResourceApp.Services
 {
@@ -32,7 +28,7 @@ namespace HumanResourceApp.Services
                 {
                     validUser = true;
                 }
-                
+
             }
             return validUser;
         }
@@ -40,5 +36,5 @@ namespace HumanResourceApp.Services
 
     }
 
-    
+
 }
