@@ -15,7 +15,7 @@
         AllowsTransparency="True">
 
     <Window.DataContext>
-        <viewModel:LoginViewModel/>
+        <viewModel:LoginViewModel/> 
     </Window.DataContext>
 
     <Window.Resources>

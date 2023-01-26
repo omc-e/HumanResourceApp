@@ -1,5 +1,7 @@
-﻿using HumanResourceApp.View;
+﻿using HumanResourceApp.Repositories;
+using HumanResourceApp.View;
 using HumanResourceApp.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,6 +20,13 @@ namespace HumanResourceApp
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            DbContextOptions options = new DbContextOptionsBuilder().UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\HumanResource.mdf;Integrated Security=True;Connect Timeout=30").Options;
+            using (RepositoryBase dbContext = new RepositoryBase(options))
+            {
+                dbContext.Database.Migrate();
+            }
+
+
             MainWindow = new LoginView()
             {
                 DataContext = new LoginViewModel()

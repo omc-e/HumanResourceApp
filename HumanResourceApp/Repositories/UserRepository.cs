@@ -1,4 +1,5 @@
 ﻿using HumanResourceApp.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -9,27 +10,31 @@ using System.Threading.Tasks;
 
 namespace HumanResourceApp.Repositories
 {
-    public class UserRepository : RepositoryBase, IUserRepository
+    public class UserRepository :  IUserRepository
     {
+        private RepositoryBase context;
+
+        
+
+        public UserRepository(RepositoryBase dbContext)
+        {
+            context = dbContext;
+        }
         public bool AuthenticateUser(NetworkCredential credential)
         {
             bool validUser = false;
-            using (var context = new RepositoryBase())
+
+
+             var user = context.User.Where(s => s.Username == credential.UserName && s.Password == credential.Password).FirstOrDefault();
+            if (user == null)
             {
-                context.Database.EnsureCreated();
-
-                var user = context.User.Where(s => s.Username == credential.UserName && s.Password == credential.Password);
-                if(user == null)
-                {
-                    validUser = false;
-                }
-                else
-                {
-                    validUser = true;
-                }
+                validUser = false;
             }
-
-            return validUser;
+            else
+            {
+                validUser = true;
+            }
+    return validUser;
         }
     }
 }

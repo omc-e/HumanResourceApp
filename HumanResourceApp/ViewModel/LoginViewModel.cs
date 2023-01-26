@@ -1,5 +1,7 @@
-﻿using HumanResourceApp.Model;
+﻿using HumanResourceApp.Factory;
+using HumanResourceApp.Model;
 using HumanResourceApp.Repositories;
+using HumanResourceApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,9 @@ namespace HumanResourceApp.ViewModel
         private SecureString _password;
         private string _errorMessage;
         private bool _isViewVisible = true;
+        private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\HumanResource.mdf;Integrated Security=True;Connect Timeout=30";
+        private static DataBaseContextFactory dbFactory = new DataBaseContextFactory(connectionString);
+        private LoginProvider loginProvider = new LoginProvider(dbFactory);
 
         private IUserRepository userRepository;
 
@@ -65,10 +70,11 @@ namespace HumanResourceApp.ViewModel
         //Constructor
         public LoginViewModel()
         {
-            userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordCommand = new ViewModelCommand(ExecuteRecoverPassCommand);
         }
+
+        
 
         private void ExecuteRecoverPassCommand(object obj)
         {
@@ -86,7 +92,7 @@ namespace HumanResourceApp.ViewModel
         }
         private void ExecuteLoginCommand(object obj)
         {
-            var isValidUser = userRepository.AuthenticateUser(new NetworkCredential(Username, Password));
+            var isValidUser = loginProvider.AuthenticateUser(new NetworkCredential(Username, Password));
             if (isValidUser)
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(
