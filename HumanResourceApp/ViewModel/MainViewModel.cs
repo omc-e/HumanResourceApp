@@ -1,4 +1,5 @@
 ﻿using FontAwesome.Sharp;
+using System;
 using System.Windows.Input;
 
 namespace HumanResourceApp.ViewModel
@@ -11,7 +12,8 @@ namespace HumanResourceApp.ViewModel
 
         public ViewModelBase CurrenChildView
         {
-            get => _currenChildView; set
+            get => _currenChildView;
+            set
             {
                 _currenChildView = value;
                 OnPropertyChanged(nameof(CurrenChildView));

@@ -8,5 +8,6 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <TextBlock Text="DogadjajiView" Foreground="White"/>
+        <TextBlock Text="JEBEM TI DAN" Foreground="Wheat"></TextBlock>s
     </Grid>
 </UserControl>

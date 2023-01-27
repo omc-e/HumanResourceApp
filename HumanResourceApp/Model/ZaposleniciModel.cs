@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HumanResourceApp.Model
 {
-    public class ZaposleniciModel
+    public class ZaposleniciModel 
     {
         [MaxLength(3)]
         [Column("Id", TypeName = "smallint")]
@@ -38,5 +39,7 @@ namespace HumanResourceApp.Model
         public DateTime DatumIzmjene { get; set; }
 
         public ICollection<DogadjajiModel> Dogadjaji { get; set; }
+
+        
     }
 }

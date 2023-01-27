@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HumanResourceApp.ViewModel"
-        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp" xmlns:local1="clr-namespace:HumanResourceApp.View"
+        xmlns:local1="clr-namespace:HumanResourceApp.View"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp" 
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
@@ -15,10 +16,11 @@
 
     <Window.DataContext>
         <local:MainViewModel/>
+        
     </Window.DataContext>
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:DogadjajiViewModel}">
+        <DataTemplate DataType="{x:Type local1:DogadjajiView}">
             <local1:DogadjajiView/>
         </DataTemplate>
 
@@ -157,19 +159,20 @@
                                           Height="20"
                                           Width="20"
                                           Foreground="{StaticResource titleColor2}"
-                                          Margin="35,0,10,0"/>
+                                          Margin="35,10,10,0"/>
 
                         <TextBlock Text="{Binding Caption}"
                                        Foreground="{StaticResource titleColor2}"
                                        FontSize="16"
                                        FontFamily="Montserrat"
                                        FontWeight="Medium"
-                                       VerticalAlignment="Center"/>
+                                       VerticalAlignment="Center"
+                                   Margin="0,10,0,0"/>
                     </StackPanel>
 
                     <ContentControl
-                        Content="{Binding CurrentChildView}"
-                        Grid.Row="1"
+                        Content="{Binding CurrenChildView}"
+                        Grid.Row="2"
                         Margin="15,15,15,15"/>
 
 

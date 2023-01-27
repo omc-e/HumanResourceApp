@@ -21,7 +21,7 @@ namespace HumanResourceApp.ViewModel
         private static DataBaseContextFactory dbFactory = new DataBaseContextFactory(connectionString);
         private LoginProvider loginProvider = new LoginProvider(dbFactory);
 
-        private IUserRepository userRepository;
+        
 
         public string Username
         {
