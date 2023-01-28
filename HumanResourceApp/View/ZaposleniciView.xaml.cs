@@ -1,6 +1,8 @@
-﻿using HumanResourceApp.Repositories;
+﻿using HumanResourceApp.Model;
+using HumanResourceApp.Repositories;
 using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HumanResourceApp.View
@@ -16,16 +18,26 @@ namespace HumanResourceApp.View
         public ZaposleniciView()
         {
             InitializeComponent();
+            Load();
 
+
+        }
+
+        private void Load()
+        {
             RepositoryBase db = new RepositoryBase();
             var zaposlenici = from d in db.Zaposlenici
                               select d;
 
-            foreach (var item in zaposlenici)
-            {
-                Console.WriteLine(item);
-            }
+           
             this.ZaposleniciLista.ItemsSource = zaposlenici.ToList();
+            
+            datagrid = this.ZaposleniciLista;
+        }
+
+        private void insertBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

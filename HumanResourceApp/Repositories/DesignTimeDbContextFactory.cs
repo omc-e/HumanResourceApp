@@ -7,9 +7,9 @@ namespace HumanResourceApp.Repositories
     {
         public RepositoryBase CreateDbContext(string[] args)
         {
-            DbContextOptions options = new DbContextOptionsBuilder().UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\HumanResource.mdf;Integrated Security=True;Connect Timeout=30").Options;
+           
 
-            return new RepositoryBase(options);
+            return new RepositoryBase();
         }
     }
 }

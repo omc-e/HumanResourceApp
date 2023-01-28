@@ -14,8 +14,8 @@ namespace HumanResourceApp
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            DbContextOptions options = new DbContextOptionsBuilder().UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\User\\HumanResource.mdf;Integrated Security=True;Connect Timeout=30").Options;
-            using (RepositoryBase dbContext = new RepositoryBase(options))
+           
+            using (RepositoryBase dbContext = new RepositoryBase())
             {
                 dbContext.Database.Migrate();
             }

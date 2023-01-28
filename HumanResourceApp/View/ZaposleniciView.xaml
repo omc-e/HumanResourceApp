@@ -4,19 +4,63 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HumanResourceApp.View"
+             xmlns:viewmodel="clr-namespace:HumanResourceApp.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+
+    
+        
+    <Control.DataContext>
+        <viewmodel:ZaposleniciViewModel/>
+    </Control.DataContext>
+
+
     <Grid>
       
         <DockPanel>
             <DataGrid x:Name="ZaposleniciLista" 
-                      Margin="10, 50, 10, 10"
+                      x:FieldModifier="public"
+                       VerticalAlignment="Top"
                       ColumnWidth="*"
-                      Background="Wheat">
-               
-                
+                      AutoGenerateColumns="False"
+                      Background="Transparent"
+                      DockPanel.Dock="Top" Height="275">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" />
+                    <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" />
+                    <DataGridTextColumn Header="Pol" Binding="{Binding PolText}" />
+                    <DataGridTextColumn Header="Grad" Binding="{Binding Grad}" />
+                    <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" />
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Dogadjaji" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="insertBtn" Content="Pogledaj" Click="insertBtn_Click" />
+                                
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
             </DataGrid>
-        </DockPanel> 
+            
+            
+        </DockPanel>
+        <Button VerticalAlignment="Bottom"
+                Height="20" Width="100"
+                HorizontalAlignment="Left"
+                Content="Dodaj radnika"
+                Command="{Binding ShowAddViewCommand}"></Button>
         
     </Grid>
 </UserControl>

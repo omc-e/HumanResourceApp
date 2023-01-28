@@ -38,6 +38,21 @@ namespace HumanResourceApp.Model
         [Column("DatumIzmjene", TypeName = "datetime2")]
         public DateTime DatumIzmjene { get; set; }
 
+        public string PolText
+        {
+            get
+            {
+                if (Pol == 1)
+                    return "Musko";
+                else if (Pol == 2)
+                    return "Zensko";
+                else
+                    return "";
+            }
+        }
+
+
+
         public ICollection<DogadjajiModel> Dogadjaji { get; set; }
 
         

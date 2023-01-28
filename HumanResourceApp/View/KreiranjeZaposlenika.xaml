@@ -3,20 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       
         xmlns:local="clr-namespace:HumanResourceApp.View"
         mc:Ignorable="d"
         Title="KreiranjeZaposlenika" Height="450" Width="800">
+
+   
+    
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="351,30,0,0" TextWrapping="Wrap" Text="Dodaj radnika" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.268"/>
         
-        <TextBox HorizontalAlignment="Left" x:Name="imeTextBox" Margin="400,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247" TextChanged="TextBox_TextChanged"/>
+        <TextBox HorizontalAlignment="Left" x:Name="imeTextBox" Margin="400,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247" />
         <TextBox HorizontalAlignment="Left" x:Name="prezimeTextBox" Margin="400,130,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
         <TextBox HorizontalAlignment="Left" x:Name="gradTextBox" Margin="400,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
         <TextBox HorizontalAlignment="Left" x:Name="adresaTextBox" Margin="400,280,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
         <ComboBox HorizontalAlignment="Left" x:Name="polComboBox" Margin="400,180,0,0" VerticalAlignment="Top" Width="247">
             <ComboBox.Items>
-                <ComboBoxItem>Musko</ComboBoxItem>
-                <ComboBoxItem>Zensko</ComboBoxItem>
+                <ComboBoxItem Content="Musko" Tag="1">
+                   
+                </ComboBoxItem>
+                <ComboBoxItem Content="Zensko" Tag="2">
+                   
+                </ComboBoxItem>
             </ComboBox.Items>
         </ComboBox>
 
@@ -25,7 +33,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="145,180,0,0" TextWrapping="Wrap" Text="Pol" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="145,230,0,0" TextWrapping="Wrap" Text="Grad" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="145,280,0,0" TextWrapping="Wrap" Text="Adresa" VerticalAlignment="Top" RenderTransformOrigin="-0.558,-2.111"/>
-        <Button Content="Dodaj Radnika" x:Name="addButton" HorizontalAlignment="Left" Margin="226,369,0,0" VerticalAlignment="Top" Width="300"/>
+        <Button Content="Dodaj Radnika" x:Name="addButton" Click="addButton_Click" HorizontalAlignment="Left" Margin="226,369,0,0" VerticalAlignment="Top" Width="300"/>
 
     </Grid>
 </Window>

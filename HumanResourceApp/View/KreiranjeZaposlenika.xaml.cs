@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HumanResourceApp.Model;
+using HumanResourceApp.Repositories;
+using HumanResourceApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,10 +25,42 @@ namespace HumanResourceApp.View
         public KreiranjeZaposlenika()
         {
             InitializeComponent();
+            
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+       
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            RepositoryBase db = new RepositoryBase();
+            byte selectedValue = 0;
+
+            if(((ComboBoxItem)polComboBox.SelectedItem).Tag == "1")
+            {
+                selectedValue = 1;
+            }
+            else
+            {
+                selectedValue = 2;
+
+            }
+
+            ZaposleniciModel radnik = new ZaposleniciModel()
+            {
+                Ime = this.imeTextBox.Text,
+                Prezime = this.prezimeTextBox.Text,
+                Grad = this.gradTextBox.Text,
+                Adresa = this.adresaTextBox.Text,
+                DatumDodavanja = DateTime.Now,
+                Pol = selectedValue
+
+
+            };
+
+            db.Zaposlenici.Add(radnik);
+            db.SaveChanges();
+            this.Close();
 
         }
     }

@@ -9,13 +9,7 @@ namespace HumanResourceApp.Repositories
         public DbSet<ZaposleniciModel> Zaposlenici { get; set; }
         public DbSet<DogadjajiModel> Dogadjaji { get; set; }
 
-        public RepositoryBase()
-        {
-        }
-        public RepositoryBase(DbContextOptions options) : base(options)
-        {
-        }
-
+      
        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -15,7 +15,7 @@ namespace HumanResourceApp.Factory
         {
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlServer(_connectionString).Options;
 
-            return new RepositoryBase(options);
+            return new RepositoryBase();
         }
     }
 
