@@ -10,14 +10,15 @@
         <Grid>
             <TextBlock HorizontalAlignment="Left" Margin="351,30,0,0" TextWrapping="Wrap" Text="Izmijeni informacije o radniku" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.268"/>
 
-            <TextBox HorizontalAlignment="Left" x:Name="imeTextBox" Margin="400,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247" />
-            <TextBox HorizontalAlignment="Left" x:Name="prezimeTextBox" Margin="400,130,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
-            <TextBox HorizontalAlignment="Left" x:Name="gradTextBox" Margin="400,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
-            <TextBox HorizontalAlignment="Left" x:Name="adresaTextBox" Margin="400,280,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
-            <ComboBox HorizontalAlignment="Left" x:Name="polComboBox" Margin="400,180,0,0" VerticalAlignment="Top" Width="247">
+            <TextBox HorizontalAlignment="Left" x:Name="imeTextBox" Text="{Binding SelectedData.Ime}" Margin="400,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247" />
+            <TextBox HorizontalAlignment="Left" x:Name="prezimeTextBox" Text="{Binding SelectedData.Prezime}" Margin="400,130,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
+            <TextBox HorizontalAlignment="Left" x:Name="gradTextBox" Text="{Binding SelectedData.Grad}" Margin="400,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
+            <TextBox HorizontalAlignment="Left" x:Name="adresaTextBox" Text="{Binding SelectedData.Adresa}" Margin="400,280,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
+
+            <ComboBox HorizontalAlignment="Left" x:Name="polComboBox" SelectedItem="{Binding SelectedData.Pol}" Margin="400,180,0,0" VerticalAlignment="Top" Width="247">
                 <ComboBox.Items>
-                    <ComboBoxItem>Musko</ComboBoxItem>
-                    <ComboBoxItem>Zensko</ComboBoxItem>
+                    <ComboBoxItem Tag="1">Musko</ComboBoxItem>
+                    <ComboBoxItem Tag="2">Zensko</ComboBoxItem>
                 </ComboBox.Items>
             </ComboBox>
 
@@ -26,7 +27,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="145,180,0,0" TextWrapping="Wrap" Text="Pol" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="145,230,0,0" TextWrapping="Wrap" Text="Grad" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="145,280,0,0" TextWrapping="Wrap" Text="Adresa" VerticalAlignment="Top" RenderTransformOrigin="-0.558,-2.111"/>
-            <Button Content="Izmijeni Informacije o Radnika" x:Name="updateButton" HorizontalAlignment="Left" Margin="226,369,0,0" VerticalAlignment="Top" Width="300"/>
+            <Button Content="Izmijeni Informacije o Radnika" x:Name="updateButton" HorizontalAlignment="Left" Margin="226,369,0,0" VerticalAlignment="Top" Width="300" Click="updateButton_Click"/>
 
         </Grid>
     </Grid>

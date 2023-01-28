@@ -9,7 +9,10 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Style/UIColors.xaml"/>
                 <ResourceDictionary Source="/Style/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Style/LightTheme.xaml"/>
+                <ResourceDictionary Source="/Style/DataGridStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            
         </ResourceDictionary>
         
      

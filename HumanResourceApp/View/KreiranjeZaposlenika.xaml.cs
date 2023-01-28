@@ -25,7 +25,7 @@ namespace HumanResourceApp.View
         public KreiranjeZaposlenika()
         {
             InitializeComponent();
-            
+            this.DataContext = new ZaposleniciViewModel();
         }
 
 
@@ -36,11 +36,11 @@ namespace HumanResourceApp.View
             RepositoryBase db = new RepositoryBase();
             byte selectedValue = 0;
 
-            if(((ComboBoxItem)polComboBox.SelectedItem).Tag == "1")
+            if((string)polComboBox.SelectionBoxItem == "Musko")
             {
                 selectedValue = 1;
             }
-            else
+            else if((string)polComboBox.SelectionBoxItem == "Zensko")
             {
                 selectedValue = 2;
 
@@ -60,6 +60,8 @@ namespace HumanResourceApp.View
 
             db.Zaposlenici.Add(radnik);
             db.SaveChanges();
+            ((ZaposleniciViewModel)this.DataContext).RefreshEmployeeData(ZaposleniciView.datagrid);
+
             this.Close();
 
         }

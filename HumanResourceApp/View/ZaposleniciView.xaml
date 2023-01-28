@@ -10,7 +10,7 @@
 
 
     
-        
+     
     <Control.DataContext>
         <viewmodel:ZaposleniciViewModel/>
     </Control.DataContext>
@@ -19,7 +19,8 @@
     <Grid>
       
         <DockPanel>
-            <DataGrid x:Name="ZaposleniciLista" 
+            <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="ZaposleniciLista" 
+                     IsReadOnly="True"
                       x:FieldModifier="public"
                        VerticalAlignment="Top"
                       ColumnWidth="*"
@@ -33,34 +34,65 @@
                     <DataGridTextColumn Header="Pol" Binding="{Binding PolText}" />
                     <DataGridTextColumn Header="Grad" Binding="{Binding Grad}" />
                     <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" />
-
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="Dogadjaji" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.HeaderTemplate>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="insertBtn" Content="Pogledaj" Click="insertBtn_Click" />
-                                
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
                 </DataGrid.Columns>
+               
 
             </DataGrid>
-            
-            
-        </DockPanel>
-        <Button VerticalAlignment="Bottom"
-                Height="20" Width="100"
+            <Button VerticalAlignment="Bottom"
+               
                 HorizontalAlignment="Left"
                 Content="Dodaj radnika"
-                Command="{Binding ShowAddViewCommand}"></Button>
-        
+                Command="{Binding ShowAddViewCommand}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462AD8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28AEED"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right"
+                Content="Izmijeni radnika"
+                Command="{Binding ShowEditViewCommand}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462AD8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28AEED"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </DockPanel>
+      
+
     </Grid>
 </UserControl>
