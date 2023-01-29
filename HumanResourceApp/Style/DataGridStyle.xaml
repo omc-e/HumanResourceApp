@@ -46,26 +46,6 @@
         </Style.Triggers>
     </Style>
 
-    <DataTemplate x:Key="RowDetailsTemplate">
-        <Border Margin="5" BorderThickness="1" BorderBrush="{DynamicResource DataGrid.Row.Details.Static.BorderBrush}">
-            <StackPanel>
-                <TextBlock Margin="5" Text="Dogadjaji:" />
-                <ItemsControl ItemsSource="{Binding Dogadjaji}" >
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Dogadjaj: " />
-                                <TextBlock Text="{Binding Dogadjaj}" />
-                                <TextBlock Text=", Datum: " />
-                                <TextBlock Text="{Binding Datum}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-        </Border>
-    </DataTemplate>
-
 
     <Style TargetType="DataGridCell">
         <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"></Setter>

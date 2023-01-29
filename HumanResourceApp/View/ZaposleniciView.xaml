@@ -18,10 +18,16 @@
 
     <Grid>
       
-        <DockPanel>
+        
+            
+            <TextBox x:Name="SearchBox" 
+                     TextChanged="SearchBox_TextChanged"
+                     Height="20"
+                     VerticalAlignment="Top"/>
             <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="ZaposleniciLista" 
                      IsReadOnly="True"
                       x:FieldModifier="public"
+                      Margin="0,30,0,0"
                        VerticalAlignment="Top"
                       ColumnWidth="*"
                       AutoGenerateColumns="False"
@@ -35,9 +41,32 @@
                     <DataGridTextColumn Header="Grad" Binding="{Binding Grad}" />
                     <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" />
                 </DataGrid.Columns>
-               
+                <DataGrid.RowDetailsTemplate>
+
+                    <DataTemplate x:Name="RowDetailsTemplate">
+                        <Border Margin="5" BorderThickness="1" BorderBrush="{DynamicResource DataGrid.Row.Details.Static.BorderBrush}">
+                            <StackPanel>
+                                <TextBlock Margin="5" Text="Dogadjaji:" />
+                                <ItemsControl ItemsSource="{Binding Dogadjaji}" >
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Dogadjaj: " />
+                                                <TextBlock Text="{Binding TekstDogadjaja}" />
+                                                <TextBlock Text=", Datum: " />
+                                                <TextBlock Text="{Binding Datum}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+
+                </DataGrid.RowDetailsTemplate>
 
             </DataGrid>
+            
             <Button VerticalAlignment="Bottom"
                
                 HorizontalAlignment="Left"
@@ -65,7 +94,34 @@
                 </Button.Template>
             </Button>
 
-            <Button VerticalAlignment="Bottom" 
+        <Button VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                Content="Izbrisi radnika"
+                Command="{Binding DeleteCommand}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#462AD8"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#28AEED"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+        <Button VerticalAlignment="Bottom" 
                 HorizontalAlignment="Right"
                 Content="Izmijeni radnika"
                 Command="{Binding ShowEditViewCommand}">
@@ -91,7 +147,7 @@
                 </Button.Template>
             </Button>
 
-        </DockPanel>
+        
       
 
     </Grid>

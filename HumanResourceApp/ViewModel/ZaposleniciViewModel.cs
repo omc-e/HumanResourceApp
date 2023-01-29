@@ -2,6 +2,8 @@
 using HumanResourceApp.Model;
 using HumanResourceApp.Repositories;
 using HumanResourceApp.View;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -17,6 +19,7 @@ namespace HumanResourceApp.ViewModel
         public static DataGrid datagrid;
         public ICommand ShowAddViewCommand { get; }
         public ICommand ShowEditViewCommand { get; }
+        public ICommand DeleteCommand { get; }
         private ObservableCollection<ZaposleniciModel> _employees;
         public ObservableCollection<ZaposleniciModel> Employees
         {
@@ -50,15 +53,39 @@ namespace HumanResourceApp.ViewModel
             _employees = new ObservableCollection<ZaposleniciModel>(GetEmployeeData());
             ShowAddViewCommand = new ViewModelCommand(ExecuteShowAddViewCommand);
             ShowEditViewCommand = new ViewModelCommand(ExecuteEditViewCommand);
-            
+            DeleteCommand = new ViewModelCommand(DeleteEmploye);
         }
 
+        private void DeleteEmploye(object obj)
+        {
+            var selectedItem = ZaposleniciView.datagrid.SelectedItem;
+            if (selectedItem == null) return;
 
-       private List<ZaposleniciModel>GetEmployeeData()
+            var result = MessageBox.Show("Zelite li izbrisati ovog radnika?", "Confirm", MessageBoxButton.YesNo);
+            if (result != MessageBoxResult.Yes) return;
+
+            using (var context = new RepositoryBase())
+            {
+                var employee = (ZaposleniciModel)selectedItem;
+                var employeeToDelete = context.Zaposlenici.FirstOrDefault(x => x.Id == employee.Id);
+                context.Zaposlenici.Remove(employeeToDelete);
+
+                var relatedEvents = context.Dogadjaji.Where(x => x.ZaposleniciId == employee.Id);
+                context.Dogadjaji.RemoveRange(relatedEvents);
+
+                context.SaveChanges();
+            }
+
+            RefreshEmployeeData(ZaposleniciView.datagrid);
+        }
+
+        private List<ZaposleniciModel>GetEmployeeData()
         {
             using (var context = new RepositoryBase())
             {
-                return context.Zaposlenici.ToList();
+                return context.Zaposlenici
+            .Include(x => x.Dogadjaji)
+            .ToList();
             }
         }
 
