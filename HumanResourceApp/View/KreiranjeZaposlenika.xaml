@@ -11,7 +11,7 @@
    
     
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="351,30,0,0" TextWrapping="Wrap" Text="Dodaj radnika" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.268"/>
+        <TextBlock HorizontalAlignment="Left" Margin="350,30,0,0" TextWrapping="Wrap" Text="Dodaj radnika" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.268"/>
         
         <TextBox HorizontalAlignment="Left" x:Name="imeTextBox" Margin="400,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247" />
         <TextBox HorizontalAlignment="Left" x:Name="prezimeTextBox" Margin="400,130,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>

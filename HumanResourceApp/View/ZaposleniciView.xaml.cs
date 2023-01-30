@@ -29,8 +29,7 @@ namespace HumanResourceApp.View
         private void Load()
         {
             RepositoryBase db = new RepositoryBase();
-            //var zaposlenici = from d in db.Zaposlenici
-            //                  select d;
+        
 
             var zaposlenici = from z in db.Zaposlenici
                               select new ZaposleniciModel

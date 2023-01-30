@@ -1,0 +1,26 @@
+﻿<Window x:Class="HumanResourceApp.View.IzmijeniDogadjaj"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HumanResourceApp.View"
+        mc:Ignorable="d"
+        Title="IzmijeniDogadjaj" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="350,30,0,0" TextWrapping="Wrap" Text="Dodaj dogadjaj" VerticalAlignment="Top" RenderTransformOrigin="0.447,-0.268"/>
+
+        <DatePicker HorizontalAlignment="Left" SelectedDate="{Binding SelectedData.Datum, Mode=TwoWay}" x:Name="datumDatePicker" Margin="400,80,0,0" VerticalAlignment="Top" Width="247" />
+        <TextBox AcceptsReturn="True" HorizontalAlignment="Left" Text="{Binding SelectedData.TekstDogadjaja, Mode=TwoWay}" Height="100" Margin="400,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" x:Name="tekstDogadjajTextBox" />
+
+        <ComboBox HorizontalAlignment="Left"  Margin="400,280,0,0" x:Name="cbZaposlenici" DisplayMemberPath="Ime" VerticalAlignment="Top" Width="247">
+
+        </ComboBox>
+
+
+        <TextBlock HorizontalAlignment="Left" Margin="145,80,0,0" TextWrapping="Wrap" Text="Datum" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="145,130,0,0" TextWrapping="Wrap" Text="Tekst Dogadjaja" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="145,280,0,0" TextWrapping="Wrap" Text="Radnik" VerticalAlignment="Top" RenderTransformOrigin="-0.558,-2.111"/>
+        <Button Content="Izmijeni Dogadjaj" x:Name="updateDogadjajBtn" Click="updateDogadjajBtn_Click" HorizontalAlignment="Left" Margin="226,369,0,0" VerticalAlignment="Top" Width="300"/>
+    </Grid>
+</Window>

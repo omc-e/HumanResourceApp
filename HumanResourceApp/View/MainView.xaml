@@ -20,7 +20,7 @@
     </Window.DataContext>
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local1:DogadjajiView}">
+        <DataTemplate DataType="{x:Type local:DogadjajiViewModel}">
             <local1:DogadjajiView/>
         </DataTemplate>
 

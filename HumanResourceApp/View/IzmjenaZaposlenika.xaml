@@ -15,7 +15,7 @@
             <TextBox HorizontalAlignment="Left" x:Name="gradTextBox" Text="{Binding SelectedData.Grad}" Margin="400,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
             <TextBox HorizontalAlignment="Left" x:Name="adresaTextBox" Text="{Binding SelectedData.Adresa}" Margin="400,280,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="247"/>
 
-            <ComboBox HorizontalAlignment="Left" x:Name="polComboBox" SelectedItem="{Binding SelectedData.Pol}" Margin="400,180,0,0" VerticalAlignment="Top" Width="247">
+            <ComboBox HorizontalAlignment="Left" x:Name="polComboBox"  Margin="400,180,0,0" VerticalAlignment="Top" Width="247">
                 <ComboBox.Items>
                     <ComboBoxItem Tag="1">Musko</ComboBoxItem>
                     <ComboBoxItem Tag="2">Zensko</ComboBoxItem>

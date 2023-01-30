@@ -33,6 +33,16 @@ namespace HumanResourceApp.View
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(imeTextBox.Text) ||
+              string.IsNullOrWhiteSpace(prezimeTextBox.Text) ||
+              string.IsNullOrWhiteSpace(adresaTextBox.Text) ||
+              string.IsNullOrWhiteSpace(gradTextBox.Text) ||
+              polComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Molimo vas popunite sva polja.");
+                return;
+            }
+
             RepositoryBase db = new RepositoryBase();
             byte selectedValue = 0;
 

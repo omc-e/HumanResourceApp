@@ -4,10 +4,131 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HumanResourceApp.View"
+             xmlns:viewmodel="clr-namespace:HumanResourceApp.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <Control.DataContext>
+        <viewmodel:DogadjajiViewModel/>
+    </Control.DataContext>
+
+
+
     <Grid>
-        <TextBlock Text="DogadjajiView" Foreground="White"/>
-        <TextBlock Text="JEBEM TI DAN" Foreground="Wheat"></TextBlock>s
+
+        
+        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" x:Name="DogadjajiLista" 
+                  RowDetailsVisibilityMode="Collapsed"
+                     IsReadOnly="True"
+                      x:FieldModifier="public"
+                      Margin="0,30,0,0"
+                       VerticalAlignment="Top"
+                      ColumnWidth="*"
+                      AutoGenerateColumns="False"
+                      Background="Transparent"
+                      DockPanel.Dock="Top" Height="275">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Datum Dogadjaja" Binding="{Binding Datum}" />
+                <DataGridTextColumn Header="Dogadjaj" Binding="{Binding TekstDogadjaja}" />
+                <DataGridTemplateColumn Header="Radnik">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                <Run Text="{Binding Zaposlenici.Ime}" />
+                <Run Text=" " />
+                <Run Text="{Binding Zaposlenici.Prezime}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+           
+
+        </DataGrid>
+
+
+        <Button VerticalAlignment="Bottom"
+               
+                HorizontalAlignment="Left"
+                Content="Dodaj dogadjaj"
+                Command="{Binding ShowAddViewCommand}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#462AD8"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#28AEED"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button VerticalAlignment="Bottom"
+               
+                HorizontalAlignment="Right"
+                Content="Izmijeni dogadjaj"
+                Command="{Binding ShowEditViewCommand}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#462AD8"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#28AEED"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button VerticalAlignment="Bottom"
+               
+                HorizontalAlignment="Center"
+                Content="Izbrisi dogadjaj"
+                Command="{Binding DeleteCommand}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#462AD8"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#28AEED"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
     </Grid>
 </UserControl>

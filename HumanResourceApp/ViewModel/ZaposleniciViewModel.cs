@@ -91,9 +91,9 @@ namespace HumanResourceApp.ViewModel
 
         public void RefreshEmployeeData(DataGrid dataGrid)
         {
-            //Retrieve employee data from a shared data source
+            
             _employees = new ObservableCollection<ZaposleniciModel>(GetEmployeeData());
-            // update the grid's data source
+  
             dataGrid.ItemsSource = _employees;
             datagrid = dataGrid;
         }
